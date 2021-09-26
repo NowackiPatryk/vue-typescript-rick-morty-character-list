@@ -1,0 +1,32 @@
+@import './variables.scss';
+@import './mixins.scss';
+@import './colors.scss';
+@import './spacing.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+
+  font-family: sans-serif;
+
+  color: $text_default;
+}
+
+
+
+//  pages
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: $light_bg;
+}
+
+@import './pages/CharactersPage.scss';
+
+//  components
+
+@import './components/CharacterPreview.scss';
+

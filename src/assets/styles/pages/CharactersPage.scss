@@ -1,0 +1,89 @@
+.charactersPage {
+  @include flex_center;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: $spacing_large;
+
+  .charactersPage_info {
+    @include flex_center;
+
+    width: 100%;
+    min-height: 30%;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    .info_header {
+      font-weight: bold;
+      font-size: $header_font;
+    }
+
+    margin: $spacing_large;
+  }
+
+  .charactersPage_searchBar {
+    width: 100%;
+    padding: $spacing_default;
+    text-align: center;
+
+    .searchBar_input {
+      width: 70%;
+      padding: $spacing_small;
+      background-color: $light;
+
+      border: none;
+      outline: none;
+    }
+  }
+
+  .charactersPage_divider {
+    width: 70%;
+    margin: $spacing_large;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: $spacing_large;
+
+    .divider_line {
+      width: 35%;
+      border-bottom: 2px solid $text_default;
+    }
+
+    .divider_text {
+      font-weight: bold;
+    }
+  }
+
+  .charactersPage_pageNav {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: $spacing_large;
+
+    & > svg {
+      cursor: pointer;
+    }
+  }
+
+  .charactersPage_characters {
+    min-height: 70%;
+    width: 100%;
+    margin-top: $spacing_large;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .charactersPage_characters > * {
+    margin: $spacing_large;
+  }
+}
