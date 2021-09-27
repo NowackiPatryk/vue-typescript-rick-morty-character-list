@@ -1,26 +1,5 @@
 <template>
   <article class="page charactersPage" v-if="!$apollo.loading">
-    <section class="charactersPage_info">
-      <header class="info_header">
-        Check details about your favourite Rick & Morty characters!
-      </header>
-      <p class="info_description">
-        Below you can see list of Rick & Morty characters.
-        Pick any you want, add him to list of your favourites and enjoy the app!
-      </p>
-    </section>
-    <form class="charactersPage_searchBar" @submit.prevent="search">
-      <input
-        class="searchBar_input"
-        type="text"
-        v-model="searchTerm"
-        placeholder="Character name...">
-    </form>
-    <div class="charactersPage_divider">
-      <div class="divider_line"></div>
-      <p class="divider_text">Or explore on your own</p>
-      <div class="divider_line"></div>
-    </div>
     <nav class="charactersPage_pageNav">
       <PageChanger v-model="pageNumber" :range="pageRange"/>
     </nav>
@@ -61,8 +40,8 @@ import PageChanger from '@/components/PageChanger.vue';
 
   apollo: {
     characters: {
-      query: gql`query characters($page: Int!) {
-          characters(page: $page) {
+      query: gql`query characters($page: Int!, $name: String!) {
+          characters(page: $page, filter:{ name: $name }) {
             results {
               id
               image
@@ -77,23 +56,18 @@ import PageChanger from '@/components/PageChanger.vue';
 
       variables() {
         return {
-          page: parseInt(this.pageNumber, 10),
+          name: this.$route.query.term,
+          page: this.pageNumber,
         };
       },
     },
   },
 })
-export default class Home extends Favourites {
-  private searchTerm = '';
-
+export default class Results extends Favourites {
   private characters: CharacterPreviewInterface[] = [];
 
   private pageNumber = 1;
 
-  private pageRange = 30;
-
-  search(): void {
-    this.$router.push(`/results?term=${this.searchTerm}`);
-  }
+  private pageRange = 10;
 }
 </script>

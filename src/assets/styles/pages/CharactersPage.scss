@@ -61,15 +61,6 @@
 
   .charactersPage_pageNav {
     width: 70%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: $spacing_large;
-
-    & > svg {
-      cursor: pointer;
-    }
   }
 
   .charactersPage_characters {
