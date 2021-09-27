@@ -55,6 +55,7 @@
     }
 
     .divider_text {
+      text-align: center;
       font-weight: bold;
     }
   }
@@ -64,7 +65,7 @@
   }
 
   .charactersPage_characters {
-    min-height: 70%;
+    min-height: 100%;
     width: 100%;
     margin-top: $spacing_large;
 
@@ -72,6 +73,12 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    transition: opacity $transition_default;
+  }
+
+  .charactersPage_characters--loading {
+    opacity: 0;
   }
 
   .charactersPage_characters > * {

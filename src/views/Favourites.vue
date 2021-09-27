@@ -1,15 +1,11 @@
 <template>
   <article class="page charactersPage">
-    <router-link to="/favourites">Go to favourites</router-link>
-    <nav class="charactersPage_pageNav">
-      <PageChanger v-model="pageNumber" :range="pageRange"/>
-    </nav>
     <section
       class="charactersPage_characters"
       :class="$apollo.loading ? 'charactersPage_characters--loading' : null"
-      >
+    >
       <CharacterPreview
-        v-for="character in characters.results"
+        v-for="character in charactersByIds"
         :key="character.id"
         :characterData="{
           ...character,
@@ -18,9 +14,7 @@
         @favBtnClick="handleFavChange"
       />
     </section>
-    <nav class="charactersPage_pageNav">
-      <PageChanger v-model="pageNumber" :range="pageRange"/>
-    </nav>
+    <p>Do you like more characters? No problem - just <router-link to="/">add more</router-link></p>
   </article>
 </template>
 
@@ -28,49 +22,49 @@
 import { gql } from 'apollo-boost';
 
 import Component from 'vue-class-component';
+import { Watch } from 'vue-property-decorator';
 import FavouritesMixin from '../mixins/favourites.mixin';
 
 import CharacterPreview from '@/components/CharacterPreview.vue';
 import CharacterPreviewInterface from '@/components/CharacterPreview.interface';
 
-import PageChanger from '@/components/PageChanger.vue';
-
 @Component({
   components: {
     CharacterPreview,
-    PageChanger,
   },
 
   apollo: {
-    characters: {
-      query: gql`query characters($page: Int!, $name: String!) {
-          characters(page: $page, filter:{ name: $name }) {
-            results {
+    charactersByIds: {
+      query: gql`query charactersByIds($ids: [ID!]!) {
+          charactersByIds(ids: $ids) {
               id
-              image
               name
               gender
               location {
                 name
               }
-            }
+              image
           }
         }`,
 
       variables() {
         return {
-          name: this.$route.query.term,
-          page: this.pageNumber,
+          ids: this.favCharacters,
         };
       },
     },
   },
 })
-export default class Results extends FavouritesMixin {
-  private characters: CharacterPreviewInterface[] = [];
+export default class Favourites extends FavouritesMixin {
+  private charactersByIds: CharacterPreviewInterface[] = [];
 
-  private pageNumber = 1;
-
-  private pageRange = 10;
+  @Watch('favCharacters')
+  onFavsChanged(currentFavs: CharacterPreviewInterface[]): void {
+    if (!currentFavs.length) {
+      this.$router.push('/');
+    } else {
+      this.$apollo.queries.charactersByIds.refetch();
+    }
+  }
 }
 </script>

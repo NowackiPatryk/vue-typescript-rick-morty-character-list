@@ -1,5 +1,6 @@
 <template>
-  <article class="page charactersPage" v-if="!$apollo.loading">
+  <article class="page charactersPage">
+    <router-link to="/favourites">Go to favourites</router-link>
     <section class="charactersPage_info">
       <header class="info_header">
         Check details about your favourite Rick & Morty characters!
@@ -24,7 +25,10 @@
     <nav class="charactersPage_pageNav">
       <PageChanger v-model="pageNumber" :range="pageRange"/>
     </nav>
-    <section class="charactersPage_characters">
+    <section
+      class="charactersPage_characters"
+      :class="$apollo.loading ? 'charactersPage_characters--loading' : null"
+    >
       <CharacterPreview
         v-for="character in characters.results"
         :key="character.id"
@@ -39,14 +43,13 @@
       <PageChanger v-model="pageNumber" :range="pageRange"/>
     </nav>
   </article>
-  <div v-else>Loading</div>
 </template>
 
 <script lang="ts">
 import { gql } from 'apollo-boost';
 
 import Component from 'vue-class-component';
-import Favourites from '../mixins/favourites.mixin';
+import FavouritesMixin from '../mixins/favourites.mixin';
 
 import CharacterPreview from '@/components/CharacterPreview.vue';
 import CharacterPreviewInterface from '@/components/CharacterPreview.interface';
@@ -83,7 +86,7 @@ import PageChanger from '@/components/PageChanger.vue';
     },
   },
 })
-export default class Home extends Favourites {
+export default class Home extends FavouritesMixin {
   private searchTerm = '';
 
   private characters: CharacterPreviewInterface[] = [];

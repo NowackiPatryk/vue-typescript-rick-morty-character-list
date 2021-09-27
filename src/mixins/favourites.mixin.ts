@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 @Component({})
-export default class Favourites extends Vue {
-  private favCharacters: number[] = [];
+export default class FavouritesMixin extends Vue {
+  favCharacters: number[] = [];
 
   beforeMount(): void {
     this.fetchFav();
@@ -44,5 +44,6 @@ export default class Favourites extends Vue {
 
   setFav(characterIds: number[]): void {
     localStorage.setItem('favCharacters', JSON.stringify(characterIds));
+    this.fetchFav();
   }
 }
