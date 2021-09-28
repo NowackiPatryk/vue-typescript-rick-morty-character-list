@@ -30,7 +30,10 @@
           <p class="informations_info">{{ characterData.gender }}</p>
         </div>
         <div class="container_actions">
-          <button class="actions_redirectBtn">Show more</button>
+          <button
+            class="actions_redirectBtn"
+            @click="showWorkInProgress">Show more
+          </button>
         </div>
       </div>
     </div>
@@ -54,5 +57,14 @@ export default class CharacterPreview extends Vue {
     default: false,
   })
   fav!: boolean;
+
+  showWorkInProgress(): void {
+    this.$notify({
+      group: 'notifications',
+      type: 'warn',
+      title: 'Work in progress',
+      text: 'Hey! This feature is still in progress.',
+    });
+  }
 }
 </script>
