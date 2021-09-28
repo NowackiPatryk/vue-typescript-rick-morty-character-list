@@ -30,7 +30,7 @@
     text-align: center;
 
     .searchBar_input {
-      width: 70%;
+      width: 100%;
       padding: $spacing_small;
       background-color: $light;
 
@@ -42,7 +42,7 @@
   }
 
   .charactersPage_divider {
-    width: 70%;
+    width: 100%;
     margin: $spacing_large;
 
     display: flex;
@@ -65,7 +65,7 @@
   }
 
   .charactersPage_pageNav {
-    width: 70%;
+    width: 100%;
   }
 
   .charactersPage_characters {
@@ -87,5 +87,23 @@
 
   .charactersPage_characters > * {
     margin: $spacing_large;
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .charactersPage {
+    .charactersPage_searchBar {
+      .searchBar_input {
+        width: 70%;
+      }
+    }
+
+    .charactersPage_divider {
+      width: 70%;
+    }
+
+    .charactersPage_pageNav {
+      width: 70%;
+    }
   }
 }
