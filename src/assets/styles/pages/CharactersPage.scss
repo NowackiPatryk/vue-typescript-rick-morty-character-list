@@ -35,6 +35,8 @@
       background-color: $light;
 
       border: none;
+      border-radius: $default_rounding;
+
       outline: none;
     }
   }
@@ -51,7 +53,9 @@
 
     .divider_line {
       width: 35%;
+
       border-bottom: 2px solid $text_default;
+      border-radius: $default_rounding;
     }
 
     .divider_text {

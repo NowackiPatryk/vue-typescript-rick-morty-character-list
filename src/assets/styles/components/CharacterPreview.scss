@@ -3,6 +3,9 @@
   display: flex;
   flex-direction: column;
 
+  border-radius: $default_rounding;
+  overflow: hidden;
+
   -webkit-box-shadow: 5px 5px 9px 5px rgba(0,0,0,0.23);
   box-shadow: 5px 5px 9px 5px rgba(0,0,0,0.23);
 
@@ -88,6 +91,8 @@
           height: 100%;
 
           border: 2px solid $text_default;
+          border-radius: $default_rounding;
+
           background: $light;
           color: $text_default;
 
