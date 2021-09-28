@@ -23,7 +23,8 @@ export default class FavouritesMixin extends Vue {
       this.setFav(newStorage);
       this.$notify({
         group: 'notifications',
-        title: 'Yeah!',
+        type: 'success',
+        title: 'Favourites',
         text: `Character has been ${isAlreadyInFavs ? 'removed' : 'added'} successfully`,
       });
 
@@ -31,6 +32,7 @@ export default class FavouritesMixin extends Vue {
     } catch {
       this.$notify({
         group: 'notifications',
+        type: 'error',
         title: 'Oops!',
         text: 'Something went wrong :(',
       });
