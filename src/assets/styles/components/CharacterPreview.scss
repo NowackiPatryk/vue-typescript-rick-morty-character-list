@@ -129,6 +129,11 @@
           .overlay_favBtn {
             right: $spacing_default;
             top: $spacing_default;
+
+            & > svg > path {
+              animation: pulse $transition_default linear infinite;
+              animation-direction: alternate;
+            }
           }
         }
       }
