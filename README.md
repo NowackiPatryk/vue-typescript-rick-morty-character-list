@@ -6,10 +6,10 @@
 This app is simple character browser based on Rick&Morty graphql API. Users are able to browse characters and add them into favourites list.
 
 # Features: <br/>
-
-*Browse characters "by-page"
-*Browse characters "by-name"
-*Add/remove favourite characters
+<br/>
+*Browse characters "by-page" <br/>
+*Browse characters "by-name" <br/>
+*Add/remove favourite characters <br/>
 
 ## Project setup
 ```
