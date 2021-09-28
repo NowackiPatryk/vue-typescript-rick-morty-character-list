@@ -26,7 +26,7 @@
         left: 0;
         top: 0;
 
-        padding: $spacing_small;
+        padding: $spacing_large;
 
         z-index: 1;
 
@@ -41,8 +41,8 @@
 
         .overlay_favBtn {
           position: absolute;
-          right: $spacing_default;
-          top: $spacing_default;
+          right: $spacing_large;
+          top: $spacing_large;
 
           z-index: 1;
           color: red;
@@ -59,7 +59,7 @@
    .details_container {
      position: relative;
      display: flex;
-     padding: $spacing_small;
+     padding: $spacing_default;
 
      overflow: hidden;
 
@@ -118,4 +118,30 @@
 .characterPreview:hover .characterPreview_details > .details_container > .container_actions{
   transform: translateX(0);
 }
+
+@media screen and (min-width: 767px) {
+  .characterPreview {
+    .characterPreview_details {
+      .details_imgContainer {
+        .imgContainer_overlay {
+          padding: $spacing_small;
+  
+          .overlay_favBtn {
+            right: $spacing_default;
+            top: $spacing_default;
+          }
+        }
+      }
+  
+     .details_container {
+       padding: $spacing_small;
+  
+       .container_actions {
+          padding: $spacing_default;
+       }
+     }
+    }
+  }
+}
+
 
