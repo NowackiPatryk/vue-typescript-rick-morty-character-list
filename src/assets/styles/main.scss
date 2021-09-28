@@ -14,7 +14,17 @@
   color: $text_default;
 }
 
+html {
+  background: no-repeat fixed center url('../img/bg_img_desktop.webp');
+}
 
+
+@media only screen and (max-width: 767px) {
+  html {
+    background-image: url('../img/bg_img_mobile.webp');
+    background-size: cover;
+  }
+}
 
 //  pages
 
