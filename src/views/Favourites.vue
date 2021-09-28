@@ -61,6 +61,12 @@ export default class Favourites extends FavouritesMixin {
   @Watch('favCharacters')
   onFavsChanged(currentFavs: CharacterPreviewInterface[]): void {
     if (!currentFavs.length) {
+      this.$notify({
+        group: 'notifications',
+        title: 'Favourites',
+        text: 'It looks like you have no favourite charaters yet. Please add some to open this section.',
+      });
+
       this.$router.push('/');
     } else {
       this.$apollo.queries.charactersByIds.refetch();
