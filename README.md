@@ -1,7 +1,5 @@
 # Rick&Morty graphql app.
 
-## Live: https://relaxed-carson-7a0d6f.netlify.app/#/
-
 ## What is this app?
 This app is simple character browser based on Rick&Morty graphql API. Users are able to browse characters and add them into favourites list.
 
